@@ -15,18 +15,15 @@
     color: #fff;
   }
 
-  body {
-    background-color: #111; /* fallback */
-    background-image: url("https://i.pinimg.com/736x/57/6a/40/576a40812359ccad70978a18860dc2a2.jpg");
-    background-size: cover;   /* fill the screen */
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    animation: moveRight 300s linear infinite; /* slow horizontal movement */
-  }
-
-  @keyframes moveRight {
-    0%   { background-position: 0 0; }
-    100% { background-position: 1000px 0; } /* move to the right */
+  /* Video background styles */
+  #bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
 
   header {
@@ -78,6 +75,13 @@
 </style>
 </head>
 <body>
+
+  <!-- Video background -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="path/to/your-gradient-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
   <header><h1>Krispyeggs</h1></header>
   <nav>
     <a href="#">Home</a>
@@ -87,7 +91,7 @@
   </nav>
   <main>
     <h2>Welcome to Krispyeggs!</h2>
-    <p>This page now has a smooth moving background that slides in one direction for a clean look.</p>
+    <p>This page now has a smooth animated gradient background for a modern look.</p>
   </main>
   <footer>&copy; 2025 Krispyeggs. All rights reserved.</footer>
 </body>
