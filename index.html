@@ -11,16 +11,13 @@
         color: #fff;
         overflow-x: hidden;
         position: relative;
-        /* Moving background using animated linear gradient */
-        background: linear-gradient(45deg, #0d0d0d, #1a1a1a, #0d0d0d);
-        background-size: 600% 600%;
-        animation: gradientMove 30s ease infinite;
+        background: #111 url('https://i.ibb.co/6bv5kVm/dark-noise.png') repeat;
+        animation: moveBG 60s linear infinite;
     }
 
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    @keyframes moveBG {
+        0% { background-position: 0 0; }
+        100% { background-position: 1000px 1000px; }
     }
 
     header {
@@ -94,7 +91,7 @@
 </nav>
 <main>
     <h2>Welcome to Krispyeggs!</h2>
-    <p>This is your custom site with a moving gradient background similar to Razed. Add your content, images, or downloads here!</p>
+    <p>This is your custom site with a moving noise background similar to Razed. Add your content, images, or downloads here!</p>
 </main>
 <footer>
     &copy; 2025 Krispyeggs. All rights reserved.
