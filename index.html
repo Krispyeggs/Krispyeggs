@@ -1,103 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Krispyeggs</title>
 <style>
-    body {
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        color: #fff;
-        overflow-x: hidden;
-        position: relative;
-        background-color: #111;
-        /* Moving noise background */
-        background-image: url('https://i.ibb.co/6bv5kVm/dark-noise.png'); /* small tileable noise image */
-        background-repeat: repeat;
-        animation: moveBG 60s linear infinite;
-    }
+  :root {
+    --bg-color: #0b0b0b;
+    --brand: #ffcc00;
+  }
 
-    @keyframes moveBG {
-        0% { background-position: 0 0; }
-        100% { background-position: 1000px 1000px; }
-    }
+  /* Base page */
+  html, body {
+    height: 100%;
+  }
 
-    header {
-        background-color: rgba(34, 34, 34, 0.85);
-        padding: 20px;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-    }
-    header h1 {
-        font-size: 3em;
-        font-weight: bold;
-        color: #ffcc00;
-        letter-spacing: 2px;
-        margin: 0;
-    }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: #fff;
+    background: var(--bg-color);
+    overflow-x: hidden;
+  }
 
-    nav {
-        background-color: rgba(51, 51, 51, 0.85);
-        display: flex;
-        justify-content: center;
-        padding: 10px 0;
-        position: relative;
-        z-index: 1;
-    }
-    nav a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 20px;
-        font-weight: bold;
-    }
-    nav a:hover {
-        color: #ffcc00;
-    }
+  /* Two animated noise layers (the script will inject the data URL) */
+  .noise-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-repeat: repeat;
+    will-change: background-position;
+    mix-blend-mode: normal; /* keep it subtle */
+  }
 
-    main {
-        padding: 50px 20px;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-    }
-    main h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-    main p {
-        font-size: 1.2em;
-        line-height: 1.6;
-    }
+  /* Different scales/speeds for parallax-y feel */
+  #noise1 { opacity: 0.07; background-size: 120px 120px; animation: moveNoise1 120s linear infinite; }
+  #noise2 { opacity: 0.04; background-size: 64px 64px;  animation: moveNoise2 180s linear infinite; }
 
-    footer {
-        background-color: rgba(34, 34, 34, 0.85);
-        padding: 20px;
-        text-align: center;
-        font-size: 0.9em;
-        color: #888;
-        position: relative;
-        z-index: 1;
-    }
+  @keyframes moveNoise1 {
+    0%   { background-position: 0px 0px; }
+    50%  { background-position: -800px -600px; }
+    100% { background-position: 0px 0px; }
+  }
+  @keyframes moveNoise2 {
+    0%   { background-position: 0px 0px; }
+    50%  { background-position: 700px 500px; }
+    100% { background-position: 0px 0px; }
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    #noise1, #noise2 { animation: none; }
+  }
+
+  /* Content layers above noise */
+  header, nav, main, footer { position: relative; z-index: 1; }
+
+  header {
+    background: rgba(34,34,34,0.85);
+    padding: 22px 16px;
+    text-align: center;
+    backdrop-filter: blur(2px);
+  }
+  header h1 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 52px);
+    letter-spacing: 2px;
+    color: var(--brand);
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  nav {
+    background: rgba(51,51,51,0.85);
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    backdrop-filter: blur(2px);
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  nav a:hover { color: var(--brand); }
+
+  main {
+    padding: min(8vw, 64px) 20px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  main h2 {
+    font-size: clamp(20px, 3.5vw, 32px);
+    margin: 0 0 12px 0;
+    color: #fff;
+  }
+  main p {
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    color: #ddd;
+  }
+
+  footer {
+    background: rgba(34,34,34,0.85);
+    padding: 20px;
+    text-align: center;
+    color: #aaa;
+    margin-top: 48px;
+    backdrop-filter: blur(2px);
+  }
 </style>
 </head>
 <body>
-<header>
-    <h1>Krispyeggs</h1>
-</header>
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Mods</a>
-    <a href="#">Downloads</a>
-    <a href="#">Contact</a>
-</nav>
-<main>
-    <h2>Welcome to Krispyeggs!</h2>
-    <p>test.</p>
-</main>
-<footer>
-    &copy; 2025 Krispyeggs. All rights reserved.
-</footer>
-</body>
-</html>
+  <!-- Self-generated moving background (no external files) -->
+  <div class="noise-layer" id="
