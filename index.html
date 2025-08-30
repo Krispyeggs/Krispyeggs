@@ -9,32 +9,18 @@
         margin: 0;
         font-family: 'Arial', sans-serif;
         color: #fff;
-        /* Dark gradient background */
-        background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-        background-size: cover;
         overflow-x: hidden;
         position: relative;
+        /* Moving background using animated linear gradient */
+        background: linear-gradient(45deg, #0d0d0d, #1a1a1a, #0d0d0d);
+        background-size: 600% 600%;
+        animation: gradientMove 30s ease infinite;
     }
 
-    /* Animated overlay pattern */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 300%;
-        height: 300%;
-        background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
-        opacity: 0.08;
-        animation: moveBG 60s linear infinite;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    @keyframes moveBG {
-        0% { transform: translate(0, 0); }
-        50% { transform: translate(-33%, -33%); }
-        100% { transform: translate(0, 0); }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     header {
@@ -108,7 +94,7 @@
 </nav>
 <main>
     <h2>Welcome to Krispyeggs!</h2>
-    <p>This is your custom site with a moving, dynamic background like Razed. Add your content, images, or downloads here!</p>
+    <p>This is your custom site with a moving gradient background similar to Razed. Add your content, images, or downloads here!</p>
 </main>
 <footer>
     &copy; 2025 Krispyeggs. All rights reserved.
