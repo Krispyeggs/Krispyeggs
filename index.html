@@ -8,17 +8,21 @@
   :root {
     --brand: #ffcc00;
   }
+
   html, body {
     height: 100%;
     margin: 0;
     overflow: hidden;
-  }
-  body {
     font-family: system-ui, sans-serif;
     color: #fff;
-    /* Replace this URL with your image */
-    background: url("your-background.jpg") repeat;
+  }
+
+  body {
+    background-color: #111; /* fallback color */
+    background-image: url("https://i.pinimg.com/1200x/ab/98/d2/ab98d2df6c78664c3df624c12d1dc960.jpg");
+    background-repeat: repeat;
     background-size: cover;
+    background-position: 0 0;
     animation: panBG 120s linear infinite;
   }
 
@@ -90,7 +94,7 @@
   </nav>
   <main>
     <h2>Welcome to Krispyeggs!</h2>
-    <p>This site now has a slowly moving background image. Replace the URL with your preferred image.</p>
+    <p>This site now has your chosen background image slowly moving for a dynamic effect.</p>
   </main>
   <footer>&copy; 2025 Krispyeggs. All rights reserved.</footer>
 </body>
