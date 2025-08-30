@@ -11,13 +11,51 @@
         color: #fff;
         overflow-x: hidden;
         position: relative;
-        background: #111 url('https://i.ibb.co/6bv5kVm/dark-noise.png') repeat;
-        animation: moveBG 60s linear infinite;
+        background-color: #111;
     }
 
-    @keyframes moveBG {
-        0% { background-position: 0 0; }
-        100% { background-position: 1000px 1000px; }
+    /* Layered moving particle/noise background */
+    body::before, body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300%;
+        height: 300%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* First particle layer */
+    body::before {
+        background:
+            radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px) repeat,
+            radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px) repeat;
+        background-size: 20px 20px, 40px 40px;
+        animation: moveNoise1 120s linear infinite;
+        opacity: 0.05;
+    }
+
+    /* Second particle layer */
+    body::after {
+        background:
+            radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px) repeat,
+            radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px) repeat;
+        background-size: 30px 30px, 60px 60px;
+        animation: moveNoise2 200s linear infinite;
+        opacity: 0.03;
+    }
+
+    @keyframes moveNoise1 {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-33%, -33%); }
+        100% { transform: translate(0, 0); }
+    }
+
+    @keyframes moveNoise2 {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(25%, 25%); }
+        100% { transform: translate(0, 0); }
     }
 
     header {
@@ -91,7 +129,7 @@
 </nav>
 <main>
     <h2>Welcome to Krispyeggs!</h2>
-    <p>This is your custom site with a moving noise background similar to Razed. Add your content, images, or downloads here!</p>
+    <p>My name is Krispyeggs!!</p>
 </main>
 <footer>
     &copy; 2025 Krispyeggs. All rights reserved.
