@@ -15,30 +15,20 @@
     color: #fff;
   }
 
-  /* Tiled moving background layers */
-  .bg-layer {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+  body {
+    background-color: #111; /* fallback */
     background-image: url("https://i.pinimg.com/736x/57/6a/40/576a40812359ccad70978a18860dc2a2.jpg");
-    background-repeat: repeat;   /* tile the image */
-    background-size: auto;       /* use original image size */
+    background-size: cover;   /* fill the screen */
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    animation: moveRight 300s linear infinite; /* slow horizontal movement */
   }
 
-  #bg1 { animation: move1 180s linear infinite; }
-  #bg2 { animation: move2 300s linear infinite; opacity: 0.6; }
-
-  @keyframes move1 {
+  @keyframes moveRight {
     0%   { background-position: 0 0; }
-    100% { background-position: 2000px 1000px; }
+    100% { background-position: 1000px 0; } /* move to the right */
   }
 
-  @keyframes move2 {
-    0%   { background-position: 1000px 500px; }
-    100% { background-position: -1000px -500px; }
-  }
-
-  /* Page content */
   header {
     background: rgba(34,34,34,0.8);
     padding: 22px 16px;
@@ -64,11 +54,7 @@
     position: relative;
     z-index: 1;
   }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-  }
+  nav a { color: #fff; text-decoration: none; font-weight: 700; }
   nav a:hover { color: var(--brand); }
 
   main {
@@ -92,12 +78,6 @@
 </style>
 </head>
 <body>
-
-  <!-- Moving background layers -->
-  <div class="bg-layer" id="bg1"></div>
-  <div class="bg-layer" id="bg2"></div>
-
-  <!-- Page content -->
   <header><h1>Krispyeggs</h1></header>
   <nav>
     <a href="#">Home</a>
@@ -107,9 +87,8 @@
   </nav>
   <main>
     <h2>Welcome to Krispyeggs!</h2>
-    <p>This page now has a smooth, infinite moving background using your chosen image. No zooming, no edges, just seamless motion behind your content.</p>
+    <p>This page now has a smooth moving background that slides in one direction for a clean look.</p>
   </main>
   <footer>&copy; 2025 Krispyeggs. All rights reserved.</footer>
-
 </body>
 </html>
