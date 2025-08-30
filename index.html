@@ -1,80 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krispyeggs</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #111;
-            color: #fff;
-        }
-        header {
-            background-color: #222;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 3em;
-            font-weight: bold;
-            color: #ffcc00;
-            letter-spacing: 2px;
-            margin: 0;
-        }
-        nav {
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ffcc00;
-        }
-        main {
-            padding: 50px 20px;
-            text-align: center;
-        }
-        main h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        main p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-        footer {
-            background-color: #222;
-            padding: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #888;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krispyeggs</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: #fff;
+        /* Dark gradient background */
+        background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+        background-size: cover;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Animated overlay pattern */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300%;
+        height: 300%;
+        background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+        opacity: 0.08;
+        animation: moveBG 60s linear infinite;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @keyframes moveBG {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-33%, -33%); }
+        100% { transform: translate(0, 0); }
+    }
+
+    header {
+        background-color: rgba(34, 34, 34, 0.85);
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    header h1 {
+        font-size: 3em;
+        font-weight: bold;
+        color: #ffcc00;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+
+    nav {
+        background-color: rgba(51, 51, 51, 0.85);
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        position: relative;
+        z-index: 1;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 20px;
+        font-weight: bold;
+    }
+    nav a:hover {
+        color: #ffcc00;
+    }
+
+    main {
+        padding: 50px 20px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    main h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    main p {
+        font-size: 1.2em;
+        line-height: 1.6;
+    }
+
+    footer {
+        background-color: rgba(34, 34, 34, 0.85);
+        padding: 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #888;
+        position: relative;
+        z-index: 1;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Krispyeggs</h1>
-    </header>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Mods</a>
-        <a href="#">Downloads</a>
-        <a href="#">Contact</a>
-    </nav>
-    <main>
-        <h2>Welcome to Krispyeggs!</h2>
-        <p>This is your custom site, designed in a sleek, modern style. Add your content, images, or downloads here!</p>
-    </main>
-    <footer>
-        &copy; 2025 Krispyeggs. All rights reserved.
-    </footer>
+<header>
+    <h1>Krispyeggs</h1>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Mods</a>
+    <a href="#">Downloads</a>
+    <a href="#">Contact</a>
+</nav>
+<main>
+    <h2>Welcome to Krispyeggs!</h2>
+    <p>This is your custom site with a moving, dynamic background like Razed. Add your content, images, or downloads here!</p>
+</main>
+<footer>
+    &copy; 2025 Krispyeggs. All rights reserved.
+</footer>
 </body>
 </html>
