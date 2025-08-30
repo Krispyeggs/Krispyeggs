@@ -119,4 +119,70 @@
 </head>
 <body>
   <!-- Self-generated moving background (no external files) -->
-  <div class="noise-layer" id="
+  <div class="noise-layer" id="noise1"></div>
+  <div class="noise-layer" id="noise2"></div>
+
+  <header>
+    <h1>Krispyeggs</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Mods</a>
+    <a href="#">Downloads</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <main>
+    <h2>Welcome to Krispyeggs!</h2>
+    <p>This page uses an embedded, animated noise background (no images loaded from the web), so it’ll work anywhere and give that subtle “alive” Razed vibe.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Krispyeggs. All rights reserved.
+  </footer>
+
+  <script>
+    // Generate a tiny transparent noise tile and use it as background-image for both layers.
+    (function () {
+      const makeNoiseDataURL = (size = 64, density = 0.12) => {
+        const c = document.createElement('canvas');
+        c.width = c.height = size;
+        const ctx = c.getContext('2d', { willReadFrequently: true });
+
+        // Fill transparent, then sprinkle white noise dots with low alpha
+        ctx.clearRect(0, 0, size, size);
+        const imageData = ctx.createImageData(size, size);
+        const data = imageData.data;
+
+        for (let i = 0; i < size * size; i++) {
+          // sparse dots: only set a fraction of pixels
+          if (Math.random() < density) {
+            const a = Math.floor(20 + Math.random() * 40); // 8%–16% alpha
+            const idx = i * 4;
+            data[idx]     = 255; // R
+            data[idx + 1] = 255; // G
+            data[idx + 2] = 255; // B
+            data[idx + 3] = a;   // A
+          }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+        return c.toDataURL('image/png');
+      };
+
+      // Create one tile and apply to both layers
+      const tileURL = makeNoiseDataURL(64, 0.10);
+      const noise1 = document.getElementById('noise1');
+      const noise2 = document.getElementById('noise2');
+
+      noise1.style.backgroundImage = `url(${tileURL})`;
+      noise2.style.backgroundImage = `url(${tileURL})`;
+
+      // Optional: if you want a tad more texture, you can generate a second tile:
+      // const tileURL2 = makeNoiseDataURL(64, 0.06);
+      // noise2.style.backgroundImage = `url(${tileURL2})`;
+    })();
+  </script>
+</body>
+</html>
