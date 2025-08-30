@@ -11,12 +11,21 @@
   html, body {
     height: 100%;
     margin: 0;
+    overflow: hidden;
   }
   body {
     font-family: system-ui, sans-serif;
     color: #fff;
-    background: url("your-background.jpg") no-repeat center center fixed;
+    /* Replace this URL with your image */
+    background: url("your-background.jpg") repeat;
     background-size: cover;
+    animation: panBG 120s linear infinite;
+  }
+
+  @keyframes panBG {
+    0%   { background-position: 0 0; }
+    50%  { background-position: 2000px 1000px; }
+    100% { background-position: 0 0; }
   }
 
   header {
@@ -24,6 +33,8 @@
     padding: 22px 16px;
     text-align: center;
     backdrop-filter: blur(2px);
+    position: relative;
+    z-index: 1;
   }
   header h1 {
     margin: 0;
@@ -39,31 +50,24 @@
     gap: 28px;
     justify-content: center;
     padding: 12px;
+    position: relative;
+    z-index: 1;
   }
   nav a {
     color: #fff;
     text-decoration: none;
     font-weight: 700;
   }
-  nav a:hover {
-    color: var(--brand);
-  }
+  nav a:hover { color: var(--brand); }
 
   main {
     padding: 60px 20px;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
-  main h2 {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
-  main p {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #ddd;
-  }
+  main h2 { font-size: 28px; margin-bottom: 12px; }
+  main p { max-width: 800px; margin: 0 auto; font-size: 18px; line-height: 1.6; color: #ddd; }
 
   footer {
     background: rgba(34,34,34,0.85);
@@ -71,6 +75,8 @@
     text-align: center;
     color: #aaa;
     margin-top: 48px;
+    position: relative;
+    z-index: 1;
   }
 </style>
 </head>
@@ -84,7 +90,7 @@
   </nav>
   <main>
     <h2>Welcome to Krispyeggs!</h2>
-    <p>This site now supports a custom image background. Just swap in your own image file or link.</p>
+    <p>This site now has a slowly moving background image. Replace the URL with your preferred image.</p>
   </main>
   <footer>&copy; 2025 Krispyeggs. All rights reserved.</footer>
 </body>
